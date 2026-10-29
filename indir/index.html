@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mayın Tarlası: Karanlık Maden · App Store</title>
+<meta name="description" content="Mayın Tarlası: Karanlık Maden, iPhone ve iPad için ücretsiz.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap">
+<style>
+/* Ana sayfanin paleti; reklamdan gelen ziyaretciyi App Store'a gecirir */
+:root{color-scheme:dark;--ink:#14181C;--amber:#E0A44A;--paper:#E8DCC8;--muted:#95A0AA}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:"Outfit",system-ui,-apple-system,sans-serif;font-weight:300;line-height:1.6}
+main{max-width:640px;margin:0 auto;padding:64px 24px;display:flex;flex-direction:column;gap:24px;align-items:center;text-align:center}
+img{width:128px;height:128px;border-radius:28px}
+h1{font-weight:600;font-size:clamp(28px,7vw,40px);margin:0;line-height:1.15}
+.sub{color:var(--amber);font-size:20px;margin:0}
+.btn{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:10px}
+.btn:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+small{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<img src="../icon.png" alt="Karanlık Maden ikonu" onerror="this.remove()">
+<h1>Mayın Tarlası: Karanlık Maden</h1>
+<p class="sub">Sallamak yok, tılsım var</p>
+<a class="btn" id="git" href="https://apps.apple.com/app/apple-store/id6819350940?pt=129529083&amp;ct=ig_web&amp;mt=8">App Store'da indir</a>
+<small>iPhone ve iPad · Ücretsiz</small>
+</main>
+<script>
+// ?ct=ig_a gibi kampanya adi App Store linkine aynen gecer; ASC kaynagi ayirir
+(function(){
+  var ct=new URLSearchParams(location.search).get('ct');
+  var a=document.getElementById('git');
+  // ASC kurali: en cok 30 karakter; burada yalniz harf, rakam, alt cizgi, tire kabul
+  if(ct&&/^[A-Za-z0-9_-]{1,30}$/.test(ct))a.href=a.href.replace('ct=ig_web','ct='+ct);
+  location.replace(a.href);
+})();
+</script>
+</body>
+</html>
